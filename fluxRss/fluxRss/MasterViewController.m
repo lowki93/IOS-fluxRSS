@@ -8,13 +8,14 @@
 
 #import "MasterViewController.h"
 
-#import "ModelArticle.h"
+#import "XmlParser.h"
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
-    ModelArticle *parse;
+    XmlParser *parser;
 }
+
 @end
 
 @implementation MasterViewController
@@ -31,9 +32,8 @@
     [super viewDidLoad];
 
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
-    
-    parse = [[ModelArticle alloc] init];
-    [parse init:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
+    parser = [[XmlParser alloc] init];
+    [parser init:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
 }
 
 - (void)didReceiveMemoryWarning
