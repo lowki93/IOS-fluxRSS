@@ -52,9 +52,9 @@
         } else if ([elementName isEqualToString:@"link"]) {
             article.link = ElementValue;
         } else if([elementName isEqualToString:@"enclosure"]){
-            article.imageUrl = attributeDict[@"url"];
+            article.imageUrlString = attributeDict[@"url"];
         } if ([elementName isEqualToString:@"pubDate"]) {
-            article.date = ElementValue;
+            article.dateString = ElementValue;
         }
 }
 

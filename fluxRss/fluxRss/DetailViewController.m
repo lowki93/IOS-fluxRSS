@@ -47,7 +47,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    [self configureView];
+    self.url = @"http://www.lemonde.fr";
 }
 
 - (void)didReceiveMemoryWarning

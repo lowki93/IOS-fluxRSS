@@ -10,7 +10,5 @@
 
 @implementation ModelArticle
 
-@synthesize title, link, imageUrl, date, image;
-
 @end
 

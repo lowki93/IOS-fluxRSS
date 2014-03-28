@@ -12,8 +12,8 @@
 
 @property(nonatomic, retain) NSString *title;
 @property(nonatomic, retain) NSString *link;
-@property(nonatomic, retain) NSURL *imageUrl;
-@property(nonatomic, retain) NSString *date;
+@property(nonatomic, retain) NSString *imageUrlString;
+@property(nonatomic, retain) NSString *dateString;
 @property(nonatomic, retain) UIImage *image;
 
 @end
