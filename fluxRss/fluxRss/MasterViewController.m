@@ -65,7 +65,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
+    cell.imageView.image = nil;
     ModelArticle *myArticle = parser.articles[indexPath.row];
 
     UILabel *articleTitle = (UILabel *)[cell viewWithTag:101];
@@ -73,6 +73,14 @@
     
     UILabel *articleDate = (UILabel *)[cell viewWithTag:102];
     articleDate.text = myArticle.date;
+    
+    // other methode
+//    if (myArticle.image != nil)  {
+//        cell.imageView.image = myArticle.image;
+//        myArticle.image = nil;
+//    } else {
+//        [NSThread detachNewThreadSelector:@selector(loadImage:) toTarget:self withObject:myArticle];
+//    }
     
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
     dispatch_async(queue, ^{
@@ -126,6 +134,21 @@
     ModelArticle *myArticle = parser.articles[indexPath.row];
     self.detailViewController.url = myArticle.link;
     self.detailViewController.title = myArticle.title;
+}
+
+- (void)loadImage:(ModelArticle *)article
+{
+    NSURL *url = [NSURL URLWithString:article.imageUrl];
+    NSData *data = [[NSData alloc] initWithContentsOfURL:url];
+    article.image = [UIImage imageWithData:data];
+    [self performSelectorOnMainThread:@selector(updateCell:) withObject:article waitUntilDone:NO];
+}
+
+- (void)updateCell:(ModelArticle *)article
+{
+    NSInteger row = [_objects indexOfObject:article];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
 }
 
 @end
