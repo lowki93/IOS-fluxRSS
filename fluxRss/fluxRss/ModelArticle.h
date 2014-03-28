@@ -11,7 +11,7 @@
 @interface ModelArticle : NSObject
 
 @property(nonatomic, retain) NSString *title;
-@property(nonatomic, retain) NSURL *link;
+@property(nonatomic, retain) NSString *link;
 @property(nonatomic, retain) NSURL *imageUrl;
 @property(nonatomic, retain) NSString *date;
 

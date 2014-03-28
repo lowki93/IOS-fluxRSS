@@ -58,7 +58,7 @@
         else
         {
             if([elementName isEqualToString:@"title"]) {
-                NSLog(@"%@", ElementValue);
+//                NSLog(@"%@", ElementValue);
                 article.title = ElementValue;
             } else if ([elementName isEqualToString:@"link"]) {
                 article.link = ElementValue;
@@ -68,7 +68,7 @@
         }
     for (int i=0; i < [articles count]; i++) {
         ModelArticle *myArticle = [articles objectAtIndex:i];
-        NSLog(@"%@", myArticle.link);
+//        NSLog(@"%@", myArticle.link);
     }
 }
 

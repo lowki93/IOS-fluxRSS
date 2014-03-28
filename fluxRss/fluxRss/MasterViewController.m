@@ -10,6 +10,7 @@
 
 #import "XmlParser.h"
 #import "DetailViewController.h"
+#import "ModelArticle.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
@@ -44,10 +45,10 @@
 
 - (void)insertNewObject:(id)sender
 {
-    if (!_objects) {
-        _objects = [[NSMutableArray alloc] init];
-    }
-    [_objects insertObject:[NSDate date] atIndex:0];
+//    if (!_objects) {
+//        _objects = [[NSMutableArray alloc] init];
+//    }
+//    [_objects insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -61,15 +62,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _objects.count;
+    return [parser.articles count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-
-    NSDate *object = _objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    
+    ModelArticle *myArticle = parser.articles[indexPath.row];
+    
+//    NSDate *object = parser.articles[indexPath.row];
+    
+    NSLog(@"title %@", myArticle.title);
+    
+    cell.textLabel.text = myArticle.title;
     return cell;
 }
 
@@ -107,8 +113,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSDate *object = _objects[indexPath.row];
-    self.detailViewController.detailItem = object;
+//    NSDate *object = _objects[indexPath.row];
+//    self.detailViewController.detailItem = object;
+    ModelArticle *myArticle = parser.articles[indexPath.row];
+
+    self.detailViewController.url = myArticle.link;
+    self.detailViewController.title = myArticle.title;
+   //    [tempWebview release];
+//    myWebView.delegate=self;
+    
+    
 }
 
 @end
