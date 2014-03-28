@@ -88,5 +88,11 @@
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
 }
+- (IBAction)goBack:(id)sender {
+}
+- (IBAction)goForward:(id)sender {
+}
+- (IBAction)goRefresh:(id)sender {
+}
 
 @end
