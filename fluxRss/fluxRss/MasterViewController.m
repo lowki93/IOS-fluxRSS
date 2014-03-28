@@ -74,13 +74,26 @@
 //    NSDate *object = parser.articles[indexPath.row];
     
   
+    UILabel *articleTitle = (UILabel *)[cell viewWithTag:101];
+    articleTitle.text = myArticle.title;
     
-//    cell.textLabel.text = myArticle.title;
+    UILabel *articleDate = (UILabel *)[cell viewWithTag:102];
+    articleDate.text = myArticle.date;
+    
+    
+ 
+    
+    
     id path = myArticle.imageUrl;
     NSURL *url = [NSURL URLWithString:path];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *img = [[UIImage alloc] initWithData:data];
-//    cell.imageView.image = img;
+    
+    UIImageView *articleImg = (UIImageView *)[cell viewWithTag:100];
+    
+    articleImg.image = img;
+
+
     
     
     
