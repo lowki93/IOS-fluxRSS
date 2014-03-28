@@ -30,6 +30,10 @@
     [rssParser setDelegate:self];
     [rssParser parse];
     NSLog(@"%d",[articles count]);
+    for (int i=0; i < [articles count]; i++) {
+        ModelArticle *myArticle = [articles objectAtIndex:i];
+        NSLog(@"%@", myArticle.imageUrl);
+    }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
@@ -45,31 +49,36 @@
         {
             // un élément début par article
             article = [[ModelArticle alloc]init];
+             [articles addObject:article];
+        } else if ([elementName isEqualToString:@"title"]) {
+            article.title = ElementValue;
+        } else if ([elementName isEqualToString:@"link"]) {
+            article.link = ElementValue;
+        } else if([elementName isEqualToString:@"enclosure"]){
+            article.imageUrl = attributeDict[@"url"];
+        } if ([elementName isEqualToString:@"pubDate"]) {
+            article.date = ElementValue;
         }
+    
 }
 
 
-- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
-        if ([elementName isEqualToString:@"item"])
-        {
-            [articles addObject:article];
-            article = nil;
-        }
-        else
-        {
-            if([elementName isEqualToString:@"title"]) {
-                NSLog(@"%@", ElementValue);
-                article.title = ElementValue;
-            } else if ([elementName isEqualToString:@"link"]) {
-                article.link = ElementValue;
-            } else if([elementName isEqualToString:@"enclosure"]){
-                article.imageUrl = ElementValue;
-            }
-        }
-    for (int i=0; i < [articles count]; i++) {
-        ModelArticle *myArticle = [articles objectAtIndex:i];
-        NSLog(@"%@", myArticle.link);
-    }
-}
+//- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName{
+//        if ([elementName isEqualToString:@"item"])
+//        {
+//           
+//            article = nil;
+//        }
+//        else
+//        {
+//            if([elementName isEqualToString:@"title"]) {
+//                article.title = ElementValue;
+//            } else if ([elementName isEqualToString:@"link"]) {
+//                article.link = ElementValue;
+//            } else if([elementName isEqualToString:@"enclosure"]){
+//                article.imageUrl = ElementValue;
+//            }
+//        }
+//}
 
 @end
