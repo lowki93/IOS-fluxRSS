@@ -73,9 +73,17 @@
     
 //    NSDate *object = parser.articles[indexPath.row];
     
-    NSLog(@"title %@", myArticle.title);
+  
     
-    cell.textLabel.text = myArticle.title;
+//    cell.textLabel.text = myArticle.title;
+    id path = myArticle.imageUrl;
+    NSURL *url = [NSURL URLWithString:path];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *img = [[UIImage alloc] initWithData:data];
+//    cell.imageView.image = img;
+    
+    
+    
     return cell;
 }
 
