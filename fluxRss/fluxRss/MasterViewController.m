@@ -8,10 +8,12 @@
 
 #import "MasterViewController.h"
 
+#import "ModelArticle.h"
 #import "DetailViewController.h"
 
 @interface MasterViewController () {
     NSMutableArray *_objects;
+    ModelArticle *parse;
 }
 @end
 
@@ -33,6 +35,9 @@
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
     self.navigationItem.rightBarButtonItem = addButton;
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
+    
+    parse = [[ModelArticle alloc] init];
+    [parse init:@"http://rss.lemonde.fr/c/205/f/3050/index.rss"];
 }
 
 - (void)didReceiveMemoryWarning

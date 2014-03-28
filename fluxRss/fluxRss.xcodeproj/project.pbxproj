@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A83D381E18E5735E0027CFD5 /* ModelArticle.m in Sources */ = {isa = PBXBuildFile; fileRef = A83D381D18E5735E0027CFD5 /* ModelArticle.m */; };
 		CC2586A918E56D7800DFF3FA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2586A818E56D7800DFF3FA /* Foundation.framework */; };
 		CC2586AB18E56D7800DFF3FA /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2586AA18E56D7800DFF3FA /* CoreGraphics.framework */; };
 		CC2586AD18E56D7800DFF3FA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC2586AC18E56D7800DFF3FA /* UIKit.framework */; };
@@ -35,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A83D381C18E5735E0027CFD5 /* ModelArticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModelArticle.h; sourceTree = "<group>"; };
+		A83D381D18E5735E0027CFD5 /* ModelArticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModelArticle.m; sourceTree = "<group>"; };
 		CC2586A518E56D7800DFF3FA /* fluxRss.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fluxRss.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2586A818E56D7800DFF3FA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		CC2586AA18E56D7800DFF3FA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -124,6 +127,8 @@
 				CC2586C118E56D7800DFF3FA /* DetailViewController.m */,
 				CC2586C318E56D7800DFF3FA /* Images.xcassets */,
 				CC2586AF18E56D7800DFF3FA /* Supporting Files */,
+				A83D381C18E5735E0027CFD5 /* ModelArticle.h */,
+				A83D381D18E5735E0027CFD5 /* ModelArticle.m */,
 			);
 			path = fluxRss;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				CC2586BF18E56D7800DFF3FA /* MasterViewController.m in Sources */,
 				CC2586B518E56D7800DFF3FA /* main.m in Sources */,
 				CC2586C218E56D7800DFF3FA /* DetailViewController.m in Sources */,
+				A83D381E18E5735E0027CFD5 /* ModelArticle.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,6 +474,7 @@
 				CC2586DC18E56D7900DFF3FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CC2586DD18E56D7900DFF3FA /* Build configuration list for PBXNativeTarget "fluxRssTests" */ = {
 			isa = XCConfigurationList;
@@ -476,6 +483,7 @@
 				CC2586DF18E56D7900DFF3FA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
