@@ -40,7 +40,6 @@
 
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName attributes:(NSDictionary *)attributeDict
 {
-        //currentElement = [elementName copy];
         ElementValue = [[NSMutableString alloc] init];
         if ([elementName isEqualToString:@"item"])
         {
@@ -57,12 +56,6 @@
         } if ([elementName isEqualToString:@"pubDate"]) {
             article.date = ElementValue;
         }
-    
 }
-
-
-
-
-
 
 @end

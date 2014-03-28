@@ -45,10 +45,7 @@
 
 - (void)insertNewObject:(id)sender
 {
-//    if (!_objects) {
-//        _objects = [[NSMutableArray alloc] init];
-//    }
-//    [_objects insertObject:[NSDate date] atIndex:0];
+
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
@@ -70,33 +67,25 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     
     ModelArticle *myArticle = parser.articles[indexPath.row];
-    
-//    NSDate *object = parser.articles[indexPath.row];
-    
-  
+
     UILabel *articleTitle = (UILabel *)[cell viewWithTag:101];
     articleTitle.text = myArticle.title;
     
     UILabel *articleDate = (UILabel *)[cell viewWithTag:102];
     articleDate.text = myArticle.date;
     
-    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0ul);
+    dispatch_async(queue, ^{
+        id path = myArticle.imageUrl;
+        NSURL *url = [NSURL URLWithString:path];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        UIImage *img = [[UIImage alloc] initWithData:data];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            UIImageView *articleImg = (UIImageView *)[cell viewWithTag:100];
+            articleImg.image = img;
+        });
+    });
  
-    
-    
-    id path = myArticle.imageUrl;
-    NSURL *url = [NSURL URLWithString:path];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *img = [[UIImage alloc] initWithData:data];
-    
-    UIImageView *articleImg = (UIImageView *)[cell viewWithTag:100];
-    
-    articleImg.image = img;
-
-
-    
-    
-    
     return cell;
 }
 
@@ -134,16 +123,9 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    NSDate *object = _objects[indexPath.row];
-//    self.detailViewController.detailItem = object;
     ModelArticle *myArticle = parser.articles[indexPath.row];
-
     self.detailViewController.url = myArticle.link;
     self.detailViewController.title = myArticle.title;
-   //    [tempWebview release];
-//    myWebView.delegate=self;
-    
-    
 }
 
 @end

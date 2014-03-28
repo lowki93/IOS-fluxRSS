@@ -19,19 +19,6 @@
 
 #pragma mark - Managing the detail item
 
-//- (void)setDetailItem:(id)newDetailItem
-//{
-//    if (_detailItem != newDetailItem) {
-//        _detailItem = newDetailItem;
-//        
-//        // Update the view.
-//        [self configureView];
-//    }
-//
-//    if (self.masterPopoverController != nil) {
-//        [self.masterPopoverController dismissPopoverAnimated:YES];
-//    }        
-//}
 
 -(void)setUrl:(NSString *)url
 {
@@ -50,13 +37,9 @@
     // Update the user interface for the detail item.
 
     if (self.url) {
-       
-        NSLog(@"url %@", self.url);
         NSURL *url = [NSURL URLWithString:self.url];
         NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
-    
         [self.myWebView  loadRequest:requestObj];
-
     }
 }
 
@@ -88,11 +71,4 @@
     [self.navigationItem setLeftBarButtonItem:nil animated:YES];
     self.masterPopoverController = nil;
 }
-- (IBAction)goBack:(id)sender {
-}
-- (IBAction)goForward:(id)sender {
-}
-- (IBAction)goRefresh:(id)sender {
-}
-
 @end
